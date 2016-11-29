@@ -14,7 +14,7 @@ tar -zxf zeromq-4.1.3.tar.gz
 # Make sure that libtool, pkg-config, build-essential, autoconf and automake
 # are installed.
 cd $ZMQ_DIR
-./configure --prefix=$THIRD_PARTY_DIR --without-libsodium
+./configure --prefix=$THIRD_PARTY_DIR --without-libsodium CPPFLAGS="-fPIC"
 make -j4
 make install -j4
 cd ..
@@ -30,7 +30,7 @@ tar -zxf mpich-3.0.4.tar.gz
 
 # Build MPICH2
 cd $MPI_DIR
-./configure --prefix=$THIRD_PARTY_DIR --disable-fc --disable-f77
+./configure --prefix=$THIRD_PARTY_DIR --disable-fc --disable-f77 CPPFLAGS="-fPIC"
 make -j4
 make install -j4
 cd ..
