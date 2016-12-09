@@ -1,9 +1,22 @@
 cmake_minimum_required(VERSION 3.1)
 
 PROJECT(MULTIVERSO)
+
+set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules" ${CMAKE_MODULE_PATH})
+
 FIND_PACKAGE(Threads REQUIRED)
-FIND_PACKAGE(ZeroMQ)
-FIND_PACKAGE(MPI)
+FIND_PACKAGE(ZeroMQ 4.1.3 REQUIRED)
+FIND_PACKAGE(MPI REQUIRED)
+
+
+
+
+
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -Wall -std=c++11 -O3")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-sign-compare -fno-omit-frame-pointer -fpermissive")
+
+
 
 if(THIRD_PARTY)
 	SET(THIRD_PARTY ${THIRD_PARTY})
