@@ -1,7 +1,7 @@
-INCLUDE_DIRECTORIES(
+set(INCLUDE_DIRECTORIES
+	${CMAKE_SOURCE_DIR}/include/multiverso
 	${ZMQ_INCLUDE_DIR}
 	${MPI_CXX_INCLUDE_PATH}
-	${CMAKE_SOURCE_DIR}/include/multiverso
 	)
 
 

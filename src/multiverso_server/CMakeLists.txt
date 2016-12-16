@@ -1,8 +1,8 @@
 
-INCLUDE_DIRECTORIES(
+set(INCLUDE_DIRECTORIES
+	${CMAKE_SOURCE_DIR}/include/multiverso
 	${ZMQ_INCLUDE_DIR}
 	${MPI_CXX_INCLUDE_PATH}
-	${CMAKE_SOURCE_DIR}/include/multiverso
 	)
 
 SET(MULTIVERSO_SERVER_SRC cl_parser.cpp main.cpp)
@@ -13,6 +13,8 @@ set(DEPENDENCIES
 	${MPI_CXX_LIBRARIES}
 )
 
+
+include_directories(${INCLUDE_DIRECTORIES})
 ADD_EXECUTABLE(multiverso.server ${MULTIVERSO_SERVER_SRC})
 
 TARGET_LINK_LIBRARIES(multiverso.server ${DEPENDENCIES} multiverso)
