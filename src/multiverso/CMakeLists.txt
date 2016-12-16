@@ -65,6 +65,7 @@ set(DEPENDENCIES
 )
 
 #ADD_LIBRARY(multiverso ${MULTIVERSO_SRC})
+include_directories(${INCLUDE_DIRECTORIES})
 Add_Library(multiverso SHARED ${MULTIVERSO_SRC})
 Add_Library(multiverso_static STATIC ${MULTIVERSO_SRC})
 
