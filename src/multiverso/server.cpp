@@ -11,10 +11,11 @@
 namespace multiverso
 {
     // Initializes the basic info and starts a server thread.
-    Server::Server(int server_id, int num_worker_process, std::string endpoint) : 
+    Server::Server(int server_id, int num_worker_process, std::string endpoint, const std::string& outDir) : 
         clocks_(num_worker_process, 0), 
         clock_msg_(num_worker_process, nullptr),
-        lock_pool_(41)
+        lock_pool_(41),
+        output_dir_(outDir)
     {
         server_id_ = server_id;
         worker_proc_count_ = num_worker_process;
@@ -64,8 +65,8 @@ namespace multiverso
         //poll_items_[0].events = ZMQ_POLLIN;
         //poll_items_[0].revents = 0;
         update_thread_ = std::thread(&Server::StartUpdateThread, this);
-        Log::Info("Server %d starts: num_workers=%d endpoint=%s\n", 
-            server_id_, worker_proc_count_, endpoint_.c_str());
+        Log::Info("Server %d starts: num_workers=%d endpoint=%s\n output_dir=%s\n", 
+            server_id_, worker_proc_count_, endpoint_.c_str(), output_dir_.c_str());
     }
 
     // Clean up at the end of the server thread
@@ -411,7 +412,7 @@ namespace multiverso
         for (int i = 0; i < tables_.size(); ++i)
         {
             // dump model to file server_$server_id$_table_$table_id$.model
-            std::string file_name = "server_" + std::to_string(server_id_)
+            std::string file_name = output_dir_ + "/" + "server_" + std::to_string(server_id_)
                 + "_table_" + std::to_string(i) + ".model";
             std::ofstream fout(file_name);
 

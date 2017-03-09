@@ -36,7 +36,7 @@ namespace multiverso
          * \param num_worker_process Total number of worker processes
          * \param endpoint The communication ZQM socket endpoint
          */
-        Server(int server_id, int num_worker_process, std::string endpoint);
+        Server(int server_id, int num_worker_process, std::string endpoint, const std::string& outDir="");
         /*! \brief Destroies the server instance and terminates the server thread.*/
         ~Server();
 
@@ -89,6 +89,7 @@ namespace multiverso
 
         MtQueueMove<std::shared_ptr<MsgPack>> update_queue_;
         LockManager lock_pool_;
+        std::string output_dir_;
         // No copying allowed
         Server(const Server&);
         void operator=(const Server&);

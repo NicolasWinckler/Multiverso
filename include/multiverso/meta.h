@@ -128,6 +128,7 @@ namespace multiverso
             lock_option = LockOption::Immutable;
             is_pipeline = true;
             server_endpoint_file = "";
+            output_dir = "";
         }
 
         /*
@@ -145,6 +146,7 @@ namespace multiverso
         bool is_pipeline;
         /// server ZMQ socket endpoint file in MPI-free version
         std::string server_endpoint_file;
+        std::string output_dir;
     };
 
     struct RegisterInfo

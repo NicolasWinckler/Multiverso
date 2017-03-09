@@ -33,8 +33,9 @@ namespace multiverso
         }
         if (reg_info_.proc_rank < reg_info_.server_count)
         {
+            std::string output_dir = config.output_dir;
             server_ = new Server(reg_info_.proc_rank, reg_info_.proc_count, 
-                kSERVER_ENDPOINT.c_str());
+                kSERVER_ENDPOINT.c_str(),output_dir);
         }
 #endif
 
