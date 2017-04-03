@@ -57,12 +57,20 @@ SET(MULTIVERSO_HDR
 	${CMAKE_SOURCE_DIR}/include/multiverso/zmq_util.h
 	)
 
+set(DEPENDENCIES
+	pthread
+	${ZMQ_LIBRARIES}
+	${MPI_CXX_LIBRARIES}
+)
+
 #ADD_LIBRARY(multiverso ${MULTIVERSO_SRC})
 Add_Library(multiverso SHARED ${MULTIVERSO_SRC})
 Add_Library(multiverso_static STATIC ${MULTIVERSO_SRC})
 
-TARGET_LINK_LIBRARIES(multiverso mpich mpl zmq pthread)
-TARGET_LINK_LIBRARIES(multiverso_static mpich mpl zmq pthread)
+#TARGET_LINK_LIBRARIES(multiverso mpich mpl zmq pthread)
+#TARGET_LINK_LIBRARIES(multiverso_static mpich mpl zmq pthread)
+TARGET_LINK_LIBRARIES(multiverso ${DEPENDENCIES})
+TARGET_LINK_LIBRARIES(multiverso_static ${DEPENDENCIES})
 
 SET_PROPERTY(TARGET multiverso PROPERTY CXX_STANDARD 11)
 

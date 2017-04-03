@@ -7,10 +7,16 @@ INCLUDE_DIRECTORIES(
 
 SET(MULTIVERSO_SERVER_SRC cl_parser.cpp main.cpp)
 
+set(DEPENDENCIES
+	pthread
+	${ZMQ_LIBRARIES}
+	${MPI_CXX_LIBRARIES}
+	multiverso
+)
 
 ADD_EXECUTABLE(multiverso.server ${MULTIVERSO_SERVER_SRC})
 
-TARGET_LINK_LIBRARIES(multiverso.server mpich mpl zmq pthread multiverso)
+TARGET_LINK_LIBRARIES(multiverso.server ${DEPENDENCIES})
 
 SET_PROPERTY(TARGET multiverso.server PROPERTY CXX_STANDARD 11)
 
