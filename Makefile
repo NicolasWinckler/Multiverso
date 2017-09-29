@@ -2,7 +2,6 @@ PROJECT := $(shell readlink $(dir $(lastword $(MAKEFILE_LIST))) -f)
 
 CXX = g++
 CXXFLAGS = -O3 \
-           -std=c++11 \
            -Wall \
            -Wno-sign-compare \
            -fno-omit-frame-pointer \
